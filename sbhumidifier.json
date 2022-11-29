@@ -1,0 +1,23 @@
+{
+  "@id": "dtmi:com:jp:sbhumidifier;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "sbhumidifier",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "PowerOn",
+      "schema": "boolean"
+    },
+    {
+      "@type": "Property",
+      "name": "LackWater",
+      "schema": "boolean"
+    },
+    {
+      "@type": "Property",
+      "name": "NebulizationEfficiency",
+      "schema": "integer"
+    }
+  ]
+}

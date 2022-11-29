@@ -1,0 +1,14 @@
+{
+  "@id": "dtmi:com:jp:house;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "House",
+  "contents": [
+    {
+      "@type": "Relationship",
+      "name": "rel_has_floors",
+      "displayName": "House has floors",
+      "target": "dtmi:com:jp:floor;1"
+    }
+  ]
+}

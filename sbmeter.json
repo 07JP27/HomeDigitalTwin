@@ -1,0 +1,18 @@
+{
+  "@id": "dtmi:com:jp:sbmeter;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "sbmeter",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+     },
+     {
+      "@type": "Property",
+      "name": "Humidity",
+      "schema": "double"
+     }
+  ]
+}

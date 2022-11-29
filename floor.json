@@ -1,0 +1,14 @@
+{
+  "@id": "dtmi:com:jp:floor;1",
+  "@context": "dtmi:dtdl:context;2",
+  "@type": "Interface",
+  "displayName": "Floor",
+  "contents": [
+    {
+      "@type": "Relationship",
+      "name": "rel_has_rooms",
+      "displayName": "Floor has rooms",
+      "target": "dtmi:com:jp:room;1"
+    }
+  ]
+}
