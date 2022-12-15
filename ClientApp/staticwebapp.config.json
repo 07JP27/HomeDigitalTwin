@@ -2,10 +2,6 @@
     "trailingSlash": "auto",
     "routes": [
       {
-        "route": "/*",
-        "allowedRoles": ["viewer"]
-      },
-      {
         "route": "/login",
         "rewrite": "/.auth/login/aad"
       },
@@ -20,6 +16,10 @@
       {
         "route": "/logout",
         "redirect": "/.auth/logout"
+      },
+      {
+        "route": "/*",
+        "allowedRoles": ["viewer"]
       }
     ],
     "navigationFallback": {
