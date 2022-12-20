@@ -31,16 +31,16 @@ namespace HomeDigitalTwinIngressFunction
             {
                 if (adtInstanceUrl == null) throw new ArgumentNullException("adtInstanceUrl");
 
-                // Authenticate with Digital Twins
+                // Authenticate with Managed ID
                 var cred = new DefaultAzureCredential();
                 var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred);
                 log.LogInformation($"ADT service client connection created.");
                
                 // <Update_twin_with_device_temperature>
                 var updateTwinData = new Azure.JsonPatchDocument();
-                updateTwinData.AppendReplace("/Temperature", 12.5);
-                updateTwinData.AppendReplace("/Humidity", 99.3);
-                await client.UpdateDigitalTwinAsync("Meter1", updateTwinData);
+                updateTwinData.AppendReplace("/LackWater", true);
+                updateTwinData.AppendReplace("/PowerOn", true);
+                await client.UpdateDigitalTwinAsync("Humidifier1", updateTwinData);
                 // </Update_twin_with_device_temperature>
             }
             catch (Exception ex)
