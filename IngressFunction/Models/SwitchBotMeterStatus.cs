@@ -1,5 +1,12 @@
-public class SwitchBotMeterStatus : SwitchBotDeviceStatusBase
+using System.Text.Json.Serialization;
+
+namespace HomeDigitalTwinIngressFunction.Models
 {
-    public float Temperature	{ get; set; }
-    public int Humidity	{ get; set; }
+    public class SwitchBotMeterStatus : SwitchBotDeviceStatusBase
+    {
+        [JsonPropertyName("temperature")]
+        public float Temperature { get; set; }
+        [JsonPropertyName("humidity")]
+        public int Humidity { get; set; }
+    }
 }

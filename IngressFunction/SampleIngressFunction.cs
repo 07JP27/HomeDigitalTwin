@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text;
 using System.Security.Cryptography;
+using HomeDigitalTwinIngressFunction.Models;
 
 namespace HomeDigitalTwinIngressFunction
 {
@@ -53,20 +54,20 @@ namespace HomeDigitalTwinIngressFunction
                 // Update twin with device status
                 var meterStatus = await GetSwitchBotDeviceStatus<SwitchBotMeterStatus>(switchbotauth,Meter1Id);
                 var meterData = new Azure.JsonPatchDocument();
-                meterData.AppendReplace("/Humidity", meterStatus.Humidity);
-                meterData.AppendReplace("/Temperature", meterStatus.Temperature);
+                meterData.AppendReplace("/Humidity", meterStatus.Body.Humidity);
+                meterData.AppendReplace("/Temperature", meterStatus.Body.Temperature);
                 await client.UpdateDigitalTwinAsync("Meter1", meterData);
 
                 var circulatorStatus = await GetSwitchBotDeviceStatus<SwitchBotPlugStatus>(switchbotauth,Circulator1Id);
                 var circulatorData = new Azure.JsonPatchDocument();
-                circulatorData.AppendReplace("/PowerOn", circulatorStatus.PowerOn);
+                circulatorData.AppendReplace("/PowerOn", circulatorStatus.Body.PowerOn);
                 await client.UpdateDigitalTwinAsync("Circulator1", circulatorData);
 
                 var humidifierStatus = await GetSwitchBotDeviceStatus<SwitchBotHumidifierStatus>(switchbotauth,Humidifer1Id);
                 var humidifierData = new Azure.JsonPatchDocument();
-                humidifierData.AppendReplace("/LackWater", humidifierStatus.LackWater);
-                humidifierData.AppendReplace("/PowerOn", humidifierStatus.PowerOn);
-                humidifierData.AppendReplace("/NebulizationEfficiency", humidifierStatus.NebulizationEfficiency);
+                humidifierData.AppendReplace("/LackWater", humidifierStatus.Body.LackWater);
+                humidifierData.AppendReplace("/PowerOn", humidifierStatus.Body.PowerOn);
+                humidifierData.AppendReplace("/NebulizationEfficiency", humidifierStatus.Body.NebulizationEfficiency);
                 await client.UpdateDigitalTwinAsync("Humidifier1", humidifierData);
             }
             catch (Exception ex)
@@ -96,7 +97,7 @@ namespace HomeDigitalTwinIngressFunction
             return res;
         }
 
-        private async Task<T> GetSwitchBotDeviceStatus<T>(SwitchBotAuthResult auth, string id) where T : SwitchBotDeviceStatusBase
+        private async Task<SwitchBotResponse<T>> GetSwitchBotDeviceStatus<T>(SwitchBotAuthResult auth, string id) where T : SwitchBotDeviceStatusBase
         {
             var request = new HttpRequestMessage(HttpMethod.Get, $"https://api.switch-bot.com/v1.1/devices/{id}/status");
             request.Headers.Add("Authorization", auth.token);
@@ -106,8 +107,8 @@ namespace HomeDigitalTwinIngressFunction
 
             var response = await Client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-
-            var obj = JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+            var jsonStr = await response.Content.ReadAsStringAsync();
+            var obj = JsonConvert.DeserializeObject<SwitchBotResponse<T>>(jsonStr);
             return obj;
         }
     }
