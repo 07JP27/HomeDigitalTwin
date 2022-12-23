@@ -24,7 +24,7 @@ namespace HomeDigitalTwinIngressFunction
         private static readonly HttpClient Client = HttpClientFactory.Create();
 
         [FunctionName("IngressToAdt")]
-        public async Task Run([TimerTrigger("*/10 * * * *")]TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 */10 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 
