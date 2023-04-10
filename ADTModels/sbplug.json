@@ -1,5 +1,5 @@
 {
-  "@id": "dtmi:com:jp:sbplug;1",
+  "@id": "dtmi:com:hdt:sbplug;1",
   "@context": "dtmi:dtdl:context;2",
   "@type": "Interface",
   "displayName": "sbplug",

@@ -1,5 +1,5 @@
 {
-  "@id": "dtmi:com:jp:room;1",
+  "@id": "dtmi:com:hdt:room;1",
   "@context": "dtmi:dtdl:context;2",
   "@type": "Interface",
   "displayName": "Room",
@@ -8,19 +8,19 @@
       "@type": "Relationship",
       "name": "rel_has_sbmeters",
       "displayName": "Rooms has SwitchBot Meter",
-      "target": "dtmi:com:jp:sbmeter;1"
+      "target": "dtmi:com:hdt:sbmeter;1"
     },
     {
       "@type": "Relationship",
       "name": "rel_has_sbplugs",
       "displayName": "Rooms has SwitchBot Plug",
-      "target": "dtmi:com:jp:sbplug;1"
+      "target": "dtmi:com:hdt:sbplug;1"
     },
     {
       "@type": "Relationship",
       "name": "rel_has_sbhumidifiers",
       "displayName": "Rooms has SwitchBot Humidifier",
-      "target": "dtmi:com:jp:sbhumidifier;1"
+      "target": "dtmi:com:hdt:sbhumidifier;1"
     }
   ]
 }

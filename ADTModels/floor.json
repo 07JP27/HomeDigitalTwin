@@ -1,5 +1,5 @@
 {
-  "@id": "dtmi:com:jp:floor;1",
+  "@id": "dtmi:com:hdt:floor;1",
   "@context": "dtmi:dtdl:context;2",
   "@type": "Interface",
   "displayName": "Floor",
@@ -8,7 +8,7 @@
       "@type": "Relationship",
       "name": "rel_has_rooms",
       "displayName": "Floor has rooms",
-      "target": "dtmi:com:jp:room;1"
+      "target": "dtmi:com:hdt:room;1"
     }
   ]
 }

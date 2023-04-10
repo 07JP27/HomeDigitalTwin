@@ -1,5 +1,5 @@
 {
-  "@id": "dtmi:com:jp:sbhumidifier;1",
+  "@id": "dtmi:com:hdt:sbhumidifier;1",
   "@context": "dtmi:dtdl:context;2",
   "@type": "Interface",
   "displayName": "sbhumidifier",
